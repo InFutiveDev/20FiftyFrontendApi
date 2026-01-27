@@ -6,10 +6,11 @@ const {
   getContact,
   deleteContact
 } = require('../controllers/contactController');
+const { authMiddleware } = require('../middleware/authMiddleware');
 
 // Contact routes
 router.post('/', createContact);
-router.get('/', getAllContacts);
+router.get('/',authMiddleware, getAllContacts);
 router.get('/:id', getContact);
 router.delete('/:id', deleteContact);
 
